@@ -10,19 +10,21 @@ for _ in range(t):
 
     maximum = max(list_m)
 
-    if list_m[0] != maximum:
-        for i in range(len(list_m)):
-            if list_m[i] == maximum:
+    output = maximum * len(list_m)
 
-                # print("the maximum is:", maximum)
-                # print("listm[i] is", list_m[i])
-                list_m[i], list_m[0] = list_m[0], list_m[i]
-                # print("after swap", list_m)
-                break
+    # if list_m[0] != maximum:
+    #     for i in range(len(list_m)):
+    #         if list_m[i] == maximum:
 
-    output = 0
-    for i in range(len(list_m)):
-        output += max(list_m[:i+1])
+    #             # print("the maximum is:", maximum)
+    #             # print("listm[i] is", list_m[i])
+    #             list_m[i], list_m[0] = list_m[0], list_m[i]
+    #             # print("after swap", list_m)
+    #             break
+
+    # output = 0
+    # for i in range(len(list_m)):
+    #     output += max(list_m[:i+1])
 
         # print("output for each", output)
 
