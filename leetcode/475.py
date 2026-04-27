@@ -1,34 +1,34 @@
 class Solution:
-    def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
+    def findRadius(self, houses: List[int], heaters: List[int]) -> int:
+
+        max_distance = float('-inf')
+        heaters.sort()
         
+        for h in houses:
 
-        output = []
-        start =[]
-        for i in range(len(intervals)):
-            start.append([intervals[i][0], i])
-
-        start = sorted(start)
-
-        print(start)
-
-        for x, y in intervals:
-
-            end = y
-
-            left, right = 0, len(start) - 1
+            left = 0
+            right = len(heaters) - 1
 
             while left < right:
 
-                mid = (left + right) // 2
+                mid = ( left + right ) // 2
 
-                if start[mid][0] >= end:
+                if heaters[mid] >= h:
                     right = mid
 
                 else:
                     left = mid + 1
 
-            next_interval = start[left][1] if start[left][0] >= end else -1
+            # left distance
 
-            output.append(next_interval)
+            dist1 = abs(h - heaters[left])
 
-        return output
+            # prev
+            dist2 = abs(h - heaters[left - 1]) if left > 0 else float('inf')
+
+            min_dist = min(dist1, dist2)
+
+            max_distance = max(min_dist, max_distance)
+
+        
+        return max_distance
